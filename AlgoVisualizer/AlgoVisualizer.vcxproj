@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{94662855-4f3b-4617-bde2-7371ae16b3a8}</ProjectGuid>
+    <RootNamespace>AlgoVisualizer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)bin_intermediates\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)bin_intermediates\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)bin_intermediates\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)bin_intermediates\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)L4_Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;glfw3dll.lib;L4.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>XCOPY "$(SolutionDir)L4_lib\*.DLL" "$(TargetDir)" /D /K /Y</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)L4_Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;glfw3dll.lib;L4.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>XCOPY "$(SolutionDir)L4_lib\*.DLL" "$(TargetDir)" /D /K /Y</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)L4_Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;glfw3dll.lib;L4.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>XCOPY "$(SolutionDir)L4_lib\*.DLL" "$(TargetDir)" /D /K /Y</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)L4_Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;glfw3dll.lib;L4.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>XCOPY "$(SolutionDir)L4_lib\*.DLL" "$(TargetDir)" /D /K /Y</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\array\Array.cpp" />
+    <ClCompile Include="src\array\ArrayCell.cpp" />
+    <ClCompile Include="src\tests\EasingTest.cpp" />
+    <ClCompile Include="src\tests\ArrayTest.cpp" />
+    <ClCompile Include="src\tests\ShadertoyTest.cpp" />
+    <ClCompile Include="src\circle\CircleRenderer.cpp" />
+    <ClCompile Include="src\rectangle\RectangleRenderer.cpp" />
+    <ClCompile Include="src\tests\RenderersTest.cpp" />
+    <ClCompile Include="src\text\Font.cpp" />
+    <ClCompile Include="src\rectangle\RectangleGeometryGenerator.cpp" />
+    <ClCompile Include="src\rectangle\Rectangle.cpp" />
+    <ClCompile Include="src\tests\RectangleTest.cpp" />
+    <ClCompile Include="src\circle\Circle.cpp" />
+    <ClCompile Include="src\tests\CircleGridTest.cpp" />
+    <ClCompile Include="src\circle\CircleGeometryGenerator.cpp" />
+    <ClCompile Include="src\tests\CircleTest.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\text\TextRenderer.cpp" />
+    <ClCompile Include="src\utils.cpp" />
+    <ClCompile Include="src\tests\TextTest.cpp" />
+    <ClCompile Include="src\text\Text.cpp" />
+    <ClCompile Include="src\text\TextGeometryGenerator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\array\Array.h" />
+    <ClInclude Include="src\array\ArrayCell.h" />
+    <ClInclude Include="src\tests\EasingTest.h" />
+    <ClInclude Include="src\tests\ArrayTest.h" />
+    <ClInclude Include="src\tests\ShadertoyTest.h" />
+    <ClInclude Include="src\tests\RenderersTest.h" />
+    <ClInclude Include="src\circle\CircleRenderer.h" />
+    <ClInclude Include="src\rectangle\RectangleRenderer.h" />
+    <ClInclude Include="src\text\Font.h" />
+    <ClInclude Include="src\rectangle\RectangleGeometryGenerator.h" />
+    <ClInclude Include="src\rectangle\Rectangle.h" />
+    <ClInclude Include="src\tests\RectangleTest.h" />
+    <ClInclude Include="src\tests\CircleGridTest.h" />
+    <ClInclude Include="src\circle\Circle.h" />
+    <ClInclude Include="src\circle\CircleGeometryGenerator.h" />
+    <ClInclude Include="src\tests\CircleTest.h" />
+    <ClInclude Include="src\utils.h" />
+    <ClInclude Include="src\tests\TextTest.h" />
+    <ClInclude Include="src\text\Text.h" />
+    <ClInclude Include="src\text\TextGeometryGenerator.h" />
+    <ClInclude Include="src\vendor\nlohmann\json.hpp" />
+    <ClInclude Include="src\text\TextRenderer.h" />
+    <ClInclude Include="src\anims\Timer.h" />
+    <ClInclude Include="src\anims\Tweens.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\fRectangle.glsl" />
+    <None Include="res\shaders\fText.glsl" />
+    <None Include="res\shaders\toy_1.glsl" />
+    <None Include="res\shaders\toy_2.glsl" />
+    <None Include="res\shaders\toy_3.glsl" />
+    <None Include="res\shaders\toy_4.glsl" />
+    <None Include="res\shaders\toy_5.glsl" />
+    <None Include="res\shaders\toy_6.glsl" />
+    <None Include="res\shaders\toy_7.glsl" />
+    <None Include="res\shaders\toy_8.glsl" />
+    <None Include="res\shaders\toy_9.glsl" />
+    <None Include="res\shaders\toy_basic.glsl" />
+    <None Include="res\shaders\fCircle.glsl" />
+    <None Include="res\shaders\fRectangleOldd.glsl" />
+    <None Include="res\shaders\vBasic.glsl" />
+    <None Include="res\shaders\vCircle.glsl" />
+    <None Include="res\shaders\vRectangle.glsl" />
+    <None Include="res\shaders\vRectangleOldd.glsl" />
+    <None Include="res\shaders\vText.glsl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

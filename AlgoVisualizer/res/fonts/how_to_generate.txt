@@ -1,0 +1,1 @@
+msdf-atlas-gen.exe -font CascadiaMono.ttf -type msdf -format png -imageout CascadiaMono.png -json CascadiaMono.json -minsize 70 -pxrange 10
