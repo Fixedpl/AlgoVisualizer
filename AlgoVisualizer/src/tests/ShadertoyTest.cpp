@@ -3,7 +3,7 @@
 #include <imgui/imgui.h>
 
 #include "OpenGL/GL_Renderer.h"
-#include "rectangle/RectangleGeometryGenerator.h"
+#include "rectangle/RectangleBufferFiller.h"
 
 
 ShadertoyTest::ShadertoyTest(Window* window)

@@ -1,8 +1,8 @@
 #include "RectangleRenderer.h"
 #include <imgui/imgui.h>
 #include "OpenGL/GL_Renderer.h"
-#include "RectangleGeometryGenerator.h"
 #include "utils.h"
+
 
 RectangleRenderer::RectangleRenderer()
 {
@@ -37,20 +37,19 @@ void RectangleRenderer::onUpdate(const glm::mat4& mvp)
 
 	m_va->bind();
 
-	RectangleBufferArray* buffer_arr = RectangleGeometryGenerator::generate(m_rects);
-	m_vb->create(buffer_arr->buffer, buffer_arr->size, DrawType::DYNAMIC);
-	
-	uint32_t* indices = Utils::generateIndicesForRects(buffer_arr->count);
-	m_ib->create(indices, buffer_arr->count * 6);
+	for (auto& buffer : m_buffers) {
+		m_vb->create(buffer->buffer, buffer->size, DrawType::DYNAMIC);
 
-	delete buffer_arr;
-	m_rects.clear();
-	delete[] indices;
+		uint32_t* indices = Utils::generateIndicesForRects(buffer->count);
+		m_ib->create(indices, buffer->count * 6);
 
-	OpenGL::Renderer::drawIndexed(*m_va, DrawUsage::TRIANGLE);
+		delete[] indices;
+
+		OpenGL::Renderer::drawIndexed(*m_va, DrawUsage::TRIANGLE);
+	}
 }
 
-void RectangleRenderer::push(const RectangleProperties& rect)
+void RectangleRenderer::push(RectangleBufferArray* buffer)
 {
-	m_rects.push_back(rect);
+	m_buffers.push_back(buffer);
 }

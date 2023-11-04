@@ -2,6 +2,9 @@
 #include "Tests/Test.h"
 
 #include "circle/CircleRenderer.h"
+#include "Entity/Entity.h"
+#include "Entity/EntityRegistry.h"
+#include "BaseComponents.h"
 
 
 class EasingTest : public Test
@@ -18,7 +21,13 @@ private:
 
 	CircleRenderer* m_circle_renderer;
 
-	CircleProperties m_circle_1;
+	EntityRegistry registry;
+	Entity circle;
+
+	Transform* transform;
+	Color* color;
+	CircleProps* props;
+	Border* border;
 
 	glm::mat4 m_mvp;
 

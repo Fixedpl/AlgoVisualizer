@@ -4,6 +4,8 @@
 
 #include "anims/Timer.h"
 #include "anims/Tweens.h"
+#include "circle/CircleBufferFiller.h"
+
 
 EasingTest::EasingTest(Window* window)
 	:
@@ -12,11 +14,24 @@ EasingTest::EasingTest(Window* window)
 
 	m_circle_renderer = new CircleRenderer();
 
-	m_circle_1.position = glm::vec3(400.0f, 200.0f, 0.0f);
-	m_circle_1.radius = 25.0f;
-	m_circle_1.color = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f);
-	m_circle_1.border_width = 5.0f;
-	m_circle_1.border_color = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+
+	circle = registry.createEntity();
+	circle.add<Transform>(Transform());
+	transform = &circle.get<Transform>();
+	transform->pos = glm::vec3(0.0f, 0.0f, 0.0f);
+
+	circle.add<Color>(Color());
+	color = &circle.get<Color>();
+	color->col = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
+
+	circle.add<CircleProps>(CircleProps());
+	props = &circle.get<CircleProps>();
+	props->radius = 50.0f;
+
+	circle.add<Border>(Border());
+	border = &circle.get<Border>();
+	border->width = 1.0f;
+	border->color = glm::vec4(glm::vec3(0.0f), 1.0f);
 
 	WindowSettings window_settings = window->getWindowSettings();
 
@@ -32,12 +47,16 @@ EasingTest::~EasingTest()
 
 void EasingTest::onUpdate(const float& frame_time)
 {
-	static Tween linear_tween(TWEENS::EASE_IN_OUT, 2.0f);
+	static Tween linear_tween(TWEENS::EASE_IN_OUT_SIN, 2.0f);
 
-	m_circle_1.position = glm::vec3(300.0f, 300.0f, 0.0f) * linear_tween.update(frame_time);
-	
-	m_circle_renderer->push(m_circle_1);
+	circle.get<Transform>().pos = glm::vec3(300.0f, 300.0f, 0.0f) * linear_tween.update(frame_time);
+	CircleBufferArray* buffer = CircleBufferFiller::generate(circle);
+
+	m_circle_renderer->push(buffer);
+
 	m_circle_renderer->onUpdate(m_mvp);
+
+	delete buffer;
 }
 
 void EasingTest::onImGuiUpdate()

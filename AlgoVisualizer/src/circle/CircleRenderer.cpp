@@ -2,8 +2,8 @@
 #include <imgui/imgui.h>
 
 #include "OpenGL/GL_Renderer.h"
-#include "CircleGeometryGenerator.h"
 #include "utils.h"
+
 
 CircleRenderer::CircleRenderer()
 {
@@ -36,20 +36,17 @@ void CircleRenderer::onUpdate(const glm::mat4& mvp)
 	
 	m_va->bind();
 
-	CircleBufferArray* buffer_arr = CircleGeometryGenerator::generate(m_circles);
-	m_vb->create(buffer_arr->buffer, buffer_arr->size, DrawType::DYNAMIC);
+	m_vb->create(m_buffer->buffer, m_buffer->size, DrawType::DYNAMIC);
 	
-	uint32_t* indices = Utils::generateIndicesForRects(buffer_arr->count);
-	m_ib->create(indices, buffer_arr->count * 6);
+	uint32_t* indices = Utils::generateIndicesForRects(m_buffer->count);
+	m_ib->create(indices, m_buffer->count * 6);
 
-	delete buffer_arr;
-	m_circles.clear();
 	delete[] indices;
 
 	OpenGL::Renderer::drawIndexed(*m_va, DrawUsage::TRIANGLE);
 }
 
-void CircleRenderer::push(const CircleProperties& props)
+void CircleRenderer::push(CircleBufferArray* buffer)
 {
-	m_circles.push_back(props);
+	m_buffer = buffer;
 }

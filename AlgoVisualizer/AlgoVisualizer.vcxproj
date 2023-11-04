@@ -93,6 +93,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,6 +114,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,6 +135,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -153,6 +156,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,8 +171,15 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\array\Array.cpp" />
-    <ClCompile Include="src\array\ArrayCell.cpp" />
+    <ClCompile Include="src\anims\AnimationChain.cpp" />
+    <ClCompile Include="src\anims\AnimationChainBuilder.cpp" />
+    <ClCompile Include="src\anims\AnimationPlayer.cpp" />
+    <ClCompile Include="src\array\ArrayFactory.cpp" />
+    <ClCompile Include="src\array\ArrayGG.cpp" />
+    <ClCompile Include="src\array\ArrayCellFactory.cpp" />
+    <ClCompile Include="src\array\ArrayCellGG.cpp" />
+    <ClCompile Include="src\circle\CircleBufferFiller.cpp" />
+    <ClCompile Include="src\rectangle\RectangleBufferFiller.cpp" />
     <ClCompile Include="src\tests\EasingTest.cpp" />
     <ClCompile Include="src\tests\ArrayTest.cpp" />
     <ClCompile Include="src\tests\ShadertoyTest.cpp" />
@@ -176,23 +187,31 @@
     <ClCompile Include="src\rectangle\RectangleRenderer.cpp" />
     <ClCompile Include="src\tests\RenderersTest.cpp" />
     <ClCompile Include="src\text\Font.cpp" />
-    <ClCompile Include="src\rectangle\RectangleGeometryGenerator.cpp" />
-    <ClCompile Include="src\rectangle\Rectangle.cpp" />
+    <ClCompile Include="src\rectangle\RectangleBuffer.cpp" />
     <ClCompile Include="src\tests\RectangleTest.cpp" />
-    <ClCompile Include="src\circle\Circle.cpp" />
+    <ClCompile Include="src\circle\CircleBuffer.cpp" />
     <ClCompile Include="src\tests\CircleGridTest.cpp" />
-    <ClCompile Include="src\circle\CircleGeometryGenerator.cpp" />
     <ClCompile Include="src\tests\CircleTest.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\text\TextRenderer.cpp" />
     <ClCompile Include="src\utils.cpp" />
     <ClCompile Include="src\tests\TextTest.cpp" />
-    <ClCompile Include="src\text\Text.cpp" />
-    <ClCompile Include="src\text\TextGeometryGenerator.cpp" />
+    <ClCompile Include="src\text\TextBuffer.cpp" />
+    <ClCompile Include="src\text\TextBufferFiller.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\array\Array.h" />
-    <ClInclude Include="src\array\ArrayCell.h" />
+    <ClInclude Include="src\anims\AnimationChain.h" />
+    <ClInclude Include="src\anims\ColorAnimation.h" />
+    <ClInclude Include="src\anims\AnimationChainBuilder.h" />
+    <ClInclude Include="src\anims\AnimationPlayer.h" />
+    <ClInclude Include="src\array\ArrayFactory.h" />
+    <ClInclude Include="src\array\ArrayGG.h" />
+    <ClInclude Include="src\array\ArrayCellFactory.h" />
+    <ClInclude Include="src\array\ArrayCellGG.h" />
+    <ClInclude Include="src\circle\CircleBufferFiller.h" />
+    <ClInclude Include="src\Colors.h" />
+    <ClInclude Include="src\rectangle\RectangleBufferFiller.h" />
+    <ClInclude Include="src\BaseComponents.h" />
     <ClInclude Include="src\tests\EasingTest.h" />
     <ClInclude Include="src\tests\ArrayTest.h" />
     <ClInclude Include="src\tests\ShadertoyTest.h" />
@@ -200,21 +219,20 @@
     <ClInclude Include="src\circle\CircleRenderer.h" />
     <ClInclude Include="src\rectangle\RectangleRenderer.h" />
     <ClInclude Include="src\text\Font.h" />
-    <ClInclude Include="src\rectangle\RectangleGeometryGenerator.h" />
-    <ClInclude Include="src\rectangle\Rectangle.h" />
+    <ClInclude Include="src\rectangle\RectangleBuffer.h" />
     <ClInclude Include="src\tests\RectangleTest.h" />
     <ClInclude Include="src\tests\CircleGridTest.h" />
-    <ClInclude Include="src\circle\Circle.h" />
-    <ClInclude Include="src\circle\CircleGeometryGenerator.h" />
+    <ClInclude Include="src\circle\CircleBuffer.h" />
     <ClInclude Include="src\tests\CircleTest.h" />
     <ClInclude Include="src\utils.h" />
     <ClInclude Include="src\tests\TextTest.h" />
-    <ClInclude Include="src\text\Text.h" />
-    <ClInclude Include="src\text\TextGeometryGenerator.h" />
+    <ClInclude Include="src\text\TextBuffer.h" />
     <ClInclude Include="src\vendor\nlohmann\json.hpp" />
     <ClInclude Include="src\text\TextRenderer.h" />
     <ClInclude Include="src\anims\Timer.h" />
     <ClInclude Include="src\anims\Tweens.h" />
+    <ClInclude Include="src\text\TextBufferFiller.h" />
+    <ClInclude Include="src\anims\TransformAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\fRectangle.glsl" />

@@ -4,7 +4,10 @@
 #include "OpenGL/GL_Shader.h"
 #include "OpenGL/GL_VertexBuffer.h"
 #include "Tests/Test.h"
-#include "rectangle/Rectangle.h"
+#include "rectangle/RectangleBuffer.h"
+#include "Entity/Entity.h"
+#include "Entity/EntityRegistry.h"
+#include "BaseComponents.h"
 
 
 class RectangleTest : public Test
@@ -28,6 +31,11 @@ private:
 
 	glm::mat4 m_mvp;
 
-	RectangleProperties props;
+	EntityRegistry registry;
+	Entity rect;
+	Transform* transform;
+	Color* color;
+	RectProps* props;
+	Border* border;
 };
 

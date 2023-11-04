@@ -1,15 +1,15 @@
 #pragma once
-#include <Entity.h>
-
+#include <Entity/Entity.h>
+#include "dll.h"
 
 
 class EntityRegistry
 {
 public:
 
-    Entity createEntity();
+    L4_API Entity createEntity();
 
-    void destroyEntity(Entity& entity);
+    L4_API void destroyEntity(Entity& entity);
 
 private:
 

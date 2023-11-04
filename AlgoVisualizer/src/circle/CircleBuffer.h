@@ -1,7 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
 
-struct CircleProperties;
 
 struct CircleVertex
 {
@@ -34,14 +33,4 @@ struct CircleBufferArray
 	int size;
 	int count;
 };
-
-struct CircleProperties
-{
-	glm::vec3 position;
-	float radius;
-	glm::vec4 color;
-	float border_width;
-	glm::vec4 border_color;
-};
-
 

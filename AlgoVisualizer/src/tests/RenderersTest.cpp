@@ -27,55 +27,55 @@ RenderersTest::RenderersTest(Window* window)
 
 void RenderersTest::onUpdate(const float& frame_time)
 {
-	CircleProperties circle;
-	circle.position = glm::vec3(100.0f, 100.0f, 0.0f);
-	circle.radius = 50.0f;
-	circle.color = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
-	circle.border_width = 1.0f;
-	circle.border_color = glm::vec4(glm::vec3(0.0f), 1.0f);
-
-	m_circles_ren->push(circle);
-
-	circle.position += glm::vec3(100.0f, 0.0f, 0.0f);
-
-	m_circles_ren->push(circle);
-
-	RectangleProperties rectangle;
-	rectangle.position = glm::vec3(300.0f, 100.0f, 0.0f);
-	rectangle.size = glm::vec2(100.0f, 50.0f);
-	rectangle.color = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
-	rectangle.radius = 4.0f;
-	rectangle.border_color = glm::vec4(glm::vec3(0.0f), 1.0f);
-	rectangle.border_width = 2.0f;
-
-	m_rect_ren->push(rectangle);
-
-	rectangle.position += glm::vec3(100.0f, 0.0f, 0.0f);
-
-	m_rect_ren->push(rectangle);
-
-	Text text;
-	text.text = "Andrzej";
-	text.props.position = glm::vec3(400.0f, 400.0f, 0.0f);
-	text.props.color = glm::vec4(glm::vec3(0.0f), 1.0f);
-	text.props.font_size = 40.0f;
-
-	m_text_ren->push(text);
-
-	Text text2;
-	text2.text = "Rafal";
-	text2.props.position = glm::vec3(600.0f, 400.0f, 0.0f);
-	text2.props.color = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
-	text2.props.font_size = 30.0f;
-
-	m_text_ren->push(text2);
-
-	push(node1);
-	push(node2);
-
-	m_circles_ren->onUpdate(m_mvp);
-	m_rect_ren->onUpdate(m_mvp);
-	m_text_ren->onUpdate(m_mvp);
+	// CircleProperties circle;
+	// circle.position = glm::vec3(100.0f, 100.0f, 0.0f);
+	// circle.radius = 50.0f;
+	// circle.color = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
+	// circle.border_width = 1.0f;
+	// circle.border_color = glm::vec4(glm::vec3(0.0f), 1.0f);
+	// 
+	// //m_circles_ren->push(circle);
+	// 
+	// circle.position += glm::vec3(100.0f, 0.0f, 0.0f);
+	// 
+	// //m_circles_ren->push(circle);
+	// 
+	// RectangleProperties rectangle;
+	// rectangle.position = glm::vec3(300.0f, 100.0f, 0.0f);
+	// rectangle.size = glm::vec2(100.0f, 50.0f);
+	// rectangle.color = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
+	// rectangle.radius = 4.0f;
+	// rectangle.border_color = glm::vec4(glm::vec3(0.0f), 1.0f);
+	// rectangle.border_width = 2.0f;
+	// 
+	// //m_rect_ren->push(rectangle);
+	// 
+	// rectangle.position += glm::vec3(100.0f, 0.0f, 0.0f);
+	// 
+	// //m_rect_ren->push(rectangle);
+	// 
+	// Text text;
+	// text.text = "Andrzej";
+	// text.props.position = glm::vec3(400.0f, 400.0f, 0.0f);
+	// text.props.color = glm::vec4(glm::vec3(0.0f), 1.0f);
+	// text.props.font_size = 40.0f;
+	// 
+	// //m_text_ren->push(text);
+	// 
+	// Text text2;
+	// text2.text = "Rafal";
+	// text2.props.position = glm::vec3(600.0f, 400.0f, 0.0f);
+	// text2.props.color = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
+	// text2.props.font_size = 30.0f;
+	// 
+	// //m_text_ren->push(text2);
+	// 
+	// push(node1);
+	// push(node2);
+	// 
+	// m_circles_ren->onUpdate(m_mvp);
+	// m_rect_ren->onUpdate(m_mvp);
+	// m_text_ren->onUpdate(m_mvp);
 }
 
 void RenderersTest::onImGuiUpdate()
@@ -86,20 +86,20 @@ void RenderersTest::onImGuiUpdate()
 
 void RenderersTest::push(const Node& node)
 {
-	CircleProperties circle;
-	circle.position = node.pos;
-	circle.radius = 20.0f;
-	circle.color = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
-	circle.border_width = 2.0f;
-	circle.border_color = glm::vec4(glm::vec3(0.0f), 1.0f);
-
-	m_circles_ren->push(circle);
-
-	Text text;
-	text.text = node.text;
-	text.props.position = node.pos + glm::vec3(13.0f, 10.0f, 0.0f);
-	text.props.color = glm::vec4(glm::vec3(0.0f), 1.0f);
-	text.props.font_size = 20.0f;
-
-	m_text_ren->push(text);
+	//CircleProperties circle;
+	//circle.position = node.pos;
+	//circle.radius = 20.0f;
+	//circle.color = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
+	//circle.border_width = 2.0f;
+	//circle.border_color = glm::vec4(glm::vec3(0.0f), 1.0f);
+	//
+	////m_circles_ren->push(circle);
+	//
+	//Text text;
+	//text.text = node.text;
+	//text.props.position = node.pos + glm::vec3(13.0f, 10.0f, 0.0f);
+	//text.props.color = glm::vec4(glm::vec3(0.0f), 1.0f);
+	//text.props.font_size = 20.0f;
+	//
+	////m_text_ren->push(text);
 }

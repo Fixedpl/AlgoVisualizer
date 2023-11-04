@@ -4,7 +4,10 @@
 #include "OpenGL/GL_Shader.h"
 #include "OpenGL/GL_VertexBuffer.h"
 #include "Tests/Test.h"
-#include "circle/Circle.h"
+#include "circle/CircleBuffer.h"
+#include "Entity/Entity.h"
+#include "Entity/EntityRegistry.h"
+#include "BaseComponents.h"
 
 
 class CircleTest : public Test
@@ -28,6 +31,11 @@ private:
 
 	glm::mat4 m_mvp;
 
-	CircleProperties m_circle_props;
+	EntityRegistry registry;
+	Entity circle;
+	Transform* transform;
+	Color* color;
+	CircleProps* props;
+	Border* border;
 };
 

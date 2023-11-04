@@ -9,7 +9,7 @@ namespace OpenGL
 	{
 	public:
 
-        L4_API static void create();
+        L4_API static void create(bool debug);
 
 	};
 }

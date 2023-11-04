@@ -3,7 +3,7 @@
 #include <imgui/imgui.h>
 
 #include "OpenGL/GL_Renderer.h"
-#include "text/TextGeometryGenerator.h"
+#include "text/TextBufferFiller.h"
 #include "utils.h"
 
 
@@ -45,12 +45,23 @@ TextTest::TextTest(Window* window)
 	m_va->setBufferLayout(layout);
 	m_va->setIndexBuffer(m_ib.get());
 
-	props.position = glm::vec3(0.0f, 0.0f, 0.0f);
-	props.color = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
-	props.font_size = 48.0f;
-	props.aa_low = 0.5f;
-	props.aa_hight = 0.6f;
-	text_str = "Ninja ;._.;";
+	text = registry.createEntity();
+	text.add<Transform>(Transform());
+	transform = &text.get<Transform>();
+	transform->pos = glm::vec3(0.0f, 0.0f, 0.0f);
+
+	text.add<Color>(Color());
+	color = &text.get<Color>();
+	color->col = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+
+	text.add<TextProps>(TextProps());
+	props = &text.get<TextProps>();
+	props->text = "Ninja ;._.;";
+	props->font_size = 48.0f;
+	props->aa_low = 0.5f;
+	props->aa_hight = 0.6f;
+	props->alignment = TextAlignment::DEFAULT;
+	props->font = font.get();
 
 	WindowSettings window_settings = window->getWindowSettings();
 
@@ -64,12 +75,12 @@ void TextTest::onUpdate(const float& dt)
 	m_shader->bind();
 	m_shader->setUniformMat4f("u_MVP", m_mvp);
 
-	CharacterBufferArray* buffer = TextGeometryGenerator::generate({ text_str, props, font.get()});
-	m_vb->create(buffer->size, DrawType::DYNAMIC);
-	m_vb->update(buffer->character_arr->vertices, buffer->size, 0);
+	TextBufferArray* buffer = TextBufferFiller::generate(text);
+	m_vb->create(buffer->character_arr->size, DrawType::DYNAMIC);
+	m_vb->update(buffer->character_arr->character_arr->vertices, buffer->character_arr->size, 0);
 	
-	uint32_t* indices = Utils::generateIndicesForRects(buffer->count);
-	m_ib->create(indices, buffer->count * 6);
+	uint32_t* indices = Utils::generateIndicesForRects(buffer->character_arr->count);
+	m_ib->create(indices, buffer->character_arr->count * 6);
 	delete[] indices;
 
 	delete buffer;
@@ -79,9 +90,9 @@ void TextTest::onUpdate(const float& dt)
 
 void TextTest::onImGuiUpdate()
 {
-	ImGui::SliderFloat3("Position", &props.position.x, 0.0f, 1280.0f);
-	ImGui::ColorEdit3("Color", &props.color.x, ImGuiColorEditFlags_::ImGuiColorEditFlags_Float);
-	ImGui::SliderFloat("Font size", &props.font_size, 10.0f, 120.0f);
-	ImGui::SliderFloat("AA low", &props.aa_low, 0.0f, 1.0f);
-	ImGui::SliderFloat("AA high", &props.aa_hight, 0.0f, 1.0f);
+	ImGui::SliderFloat3("Position", &transform->pos.x, 0.0f, 1280.0f);
+	ImGui::ColorEdit3("Color", &color->col.x, ImGuiColorEditFlags_::ImGuiColorEditFlags_Float);
+	ImGui::SliderFloat("Font size", &props->font_size, 10.0f, 120.0f);
+	ImGui::SliderFloat("AA low", &props->aa_low, 0.0f, 1.0f);
+	ImGui::SliderFloat("AA high", &props->aa_hight, 0.0f, 1.0f);
 }

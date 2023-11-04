@@ -2,7 +2,6 @@
 #include <imgui/imgui.h>
 
 #include "OpenGL/GL_Renderer.h"
-#include "TextGeometryGenerator.h"
 #include "utils.h"
 
 
@@ -50,21 +49,25 @@ void TextRenderer::onUpdate(const glm::mat4& mvp)
 	
 	m_va->bind();
 
-	TextBufferArray* buffer = TextGeometryGenerator::generate(m_texts);
-	m_vb->create(buffer->character_arr->character_arr, buffer->character_arr->size, DrawType::DYNAMIC);
+	for (auto& buffer : m_buffers) {
+		m_vb->create(buffer->character_arr->character_arr, buffer->character_arr->size, DrawType::DYNAMIC);
 
-	uint32_t* indices = Utils::generateIndicesForRects(buffer->character_arr->count);
-	m_ib->create(indices, buffer->character_arr->count * 6);
-	
-	delete buffer;
-	m_texts.clear();
-	delete[] indices;
+		uint32_t* indices = Utils::generateIndicesForRects(buffer->character_arr->count);
+		m_ib->create(indices, buffer->character_arr->count * 6);
 
-	OpenGL::Renderer::drawIndexed(*m_va, DrawUsage::TRIANGLE);
+		delete[] indices;
+
+		OpenGL::Renderer::drawIndexed(*m_va, DrawUsage::TRIANGLE);
+	}
 }
 
-void TextRenderer::push(const Text& text)
+void TextRenderer::push(TextBufferArray* buffer)
 {
-	m_texts.push_back({ text.text, text.props, m_font.get(), text.alignment });
+	m_buffers.push_back(buffer);
+}
+
+Font* TextRenderer::getFont()
+{
+	return m_font.get();
 }
 

@@ -13,7 +13,8 @@
 
 int main()
 {
-    WindowSettings window_settings = WindowSettings();
+    WindowSettings window_settings;
+    window_settings.opengl_debug = false;
 
     TestingEnvironment env(window_settings);
 
@@ -30,6 +31,7 @@ int main()
 
     env.run();
 
+    return 0;
 }
 
 

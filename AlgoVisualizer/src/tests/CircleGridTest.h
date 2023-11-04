@@ -5,8 +5,9 @@
 #include "OpenGL/GL_Shader.h"
 #include "OpenGL/GL_VertexBuffer.h"
 #include "Tests/Test.h"
-#include "circle/Circle.h"
-
+#include "Entity/Entity.h"
+#include "Entity/EntityRegistry.h"
+#include "BaseComponents.h"
 
 
 class CircleGridTest : public Test
@@ -25,6 +26,8 @@ private:
 
 	void generateGrid();
 
+	Entity generateCircle();
+
 private:
 
 	std::unique_ptr<OpenGL::Shader> m_shader;
@@ -34,11 +37,16 @@ private:
 
 	glm::mat4 m_mvp;
 
-	CircleProperties m_circle_props;
-
-	std::vector<CircleProperties> m_circles;
+	EntityRegistry registry;
+	std::vector<Entity> m_circles;
 
 	int m_circle_count_vertical;
 	int m_circle_count_horizontal;
+
+	Transform transform;
+	Color color;
+	CircleProps props;
+	Border border;
+
 };
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 
-struct RectangleProperties;
+
 
 struct RectangleVertex
 {
@@ -35,16 +35,5 @@ struct RectangleBufferArray
 	RectangleBuffer* buffer;
 	int size;
 	int count;
-};
-
-struct RectangleProperties
-{
-	glm::vec3 position;
-	glm::vec4 color;
-	glm::vec2 size;
-	float radius;
-	float border_width;
-	glm::vec4 border_color;
-	float sharpness;
 };
 
