@@ -3,7 +3,7 @@
 
 #include "OpenGL/GL_Shader.h"
 #include "OpenGL/GL_VertexBuffer.h"
-#include "Circle.h"
+#include "CircleBuffer.h"
 
 
 class CircleRenderer
@@ -14,7 +14,7 @@ public:
 
 	void onUpdate(const glm::mat4& mvp);
 
-	void push(const CircleProperties& props);
+	void push(CircleBufferArray* buffer);
 
 private:
 
@@ -23,5 +23,5 @@ private:
 	std::unique_ptr<OpenGL::VertexBuffer> m_vb;
 	std::unique_ptr<OpenGL::IndexBuffer> m_ib;
 
-	std::vector<CircleProperties> m_circles;
+	CircleBufferArray* m_buffer;
 };

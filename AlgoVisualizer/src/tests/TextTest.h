@@ -6,8 +6,10 @@
 #include "OpenGL/GL_Texture.h"
 #include "OpenGL/GL_TextureSlots.h"
 #include "Tests/Test.h"
-#include "text/Text.h"
 #include "text/Font.h"
+#include "Entity/Entity.h"
+#include "Entity/EntityRegistry.h"
+#include "BaseComponents.h"
 
 
 class TextTest : public Test
@@ -33,6 +35,11 @@ private:
 	std::unique_ptr<Font> font;
 
 	glm::mat4 m_mvp;
-	TextProperties props;
-	std::string text_str;
+
+	EntityRegistry registry;
+	Entity text;
+	Transform* transform;
+	Color* color;
+	TextProps* props;
+	Border* border;
 };

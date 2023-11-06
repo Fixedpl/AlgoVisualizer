@@ -32,6 +32,10 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+L4_lib_intermediates/
+L4_lib/
+bin_intermediates/
+bin/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

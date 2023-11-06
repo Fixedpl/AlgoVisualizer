@@ -3,7 +3,8 @@
 #include <imgui/imgui.h>
 
 #include "OpenGL/GL_Renderer.h"
-#include "circle/CircleGeometryGenerator.h"
+#include "circle/CircleBufferFiller.h"
+
 
 
 CircleTest::CircleTest(Window* window)
@@ -33,11 +34,23 @@ CircleTest::CircleTest(Window* window)
 	m_va->setBufferLayout(circle_layout);
 	m_va->setIndexBuffer(m_ib.get());
 
-	m_circle_props.position = glm::vec3(0.0f, 0.0f, 0.0f);
-	m_circle_props.radius = 50.0f;
-	m_circle_props.color = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
-	m_circle_props.border_width = 1.0f;
-	m_circle_props.border_color = glm::vec4(glm::vec3(0.0f), 1.0f);
+	circle = registry.createEntity();
+	circle.add<Transform>(Transform());
+	transform = &circle.get<Transform>();
+	transform->pos = glm::vec3(0.0f, 0.0f, 0.0f);
+
+	circle.add<Color>(Color());
+	color = &circle.get<Color>();
+	color->col = glm::vec4(1.0f, 1.0f, 0.0f, 1.0f);
+
+	circle.add<CircleProps>(CircleProps());
+	props = &circle.get<CircleProps>();
+	props->radius = 50.0f;
+
+	circle.add<Border>(Border());
+	border = &circle.get<Border>();
+	border->width = 1.0f;
+	border->color = glm::vec4(glm::vec3(0.0f), 1.0f);
 
 	WindowSettings window_settings = window->getWindowSettings();
 
@@ -51,8 +64,8 @@ void CircleTest::onUpdate(const float& dt)
 	m_shader->bind();
 	m_shader->setUniformMat4f("u_MVP", m_mvp);
 
-	CircleBuffer* circle_buffer = CircleGeometryGenerator::generate(m_circle_props);
-	m_vb->update(circle_buffer->vertices, sizeof(CircleBuffer), 0);
+	CircleBufferArray* circle_buffer = CircleBufferFiller::generate(circle);
+	m_vb->update(circle_buffer->buffer->vertices, sizeof(CircleBuffer), 0);
 	delete circle_buffer;
 
 	OpenGL::Renderer::drawIndexed(*m_va, DrawUsage::TRIANGLE);
@@ -60,9 +73,9 @@ void CircleTest::onUpdate(const float& dt)
 
 void CircleTest::onImGuiUpdate()
 {
-	ImGui::SliderFloat3("Position", &m_circle_props.position.x, 0.0f, 1280.0f);
-	ImGui::SliderFloat("Radius", &m_circle_props.radius, 0.0f, 400.0f);
-	ImGui::ColorEdit3("Color", &m_circle_props.color.x, ImGuiColorEditFlags_::ImGuiColorEditFlags_Float);
-	ImGui::SliderFloat("Border width", &m_circle_props.border_width, 0.0f, 50.0f);
-	ImGui::ColorEdit3("Border color", &m_circle_props.border_color.x, ImGuiColorEditFlags_::ImGuiColorEditFlags_Float);
+	ImGui::SliderFloat3("Position", &transform->pos.x, 0.0f, 1280.0f);
+	ImGui::SliderFloat("Radius", &props->radius, 0.0f, 400.0f);
+	ImGui::ColorEdit3("Color", &color->col.x, ImGuiColorEditFlags_::ImGuiColorEditFlags_Float);
+	ImGui::SliderFloat("Border width", &border->width, 0.0f, 50.0f);
+	ImGui::ColorEdit3("Border color", &border->color.x, ImGuiColorEditFlags_::ImGuiColorEditFlags_Float);
 }

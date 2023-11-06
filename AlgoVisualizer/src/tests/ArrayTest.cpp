@@ -3,13 +3,19 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <imgui/imgui.h>
 
+#include "array/ArrayCellFactory.h"
+#include "array/ArrayCellGG.h"
+#include "array/ArrayFactory.h"
+#include "anims/AnimationChainBuilder.h"
+
+#include "Colors.h"
 
 
 ArrayTest::ArrayTest(Window* window)
 	:
 	Test(window)
 {
-	m_text_renderer = std::make_unique<TextRenderer>();
+	m_text_ren = std::make_unique<TextRenderer>();
 	m_rect_ren = std::make_unique<RectangleRenderer>();
 
 	std::vector<std::string> string_array = {
@@ -20,11 +26,22 @@ ArrayTest::ArrayTest(Window* window)
 
 	m_array_position = glm::vec3(100.0f, 100.0f, 0.0f);
 	float cell_size = 100.0f;
-	m_array = new Array(string_array, cell_size, m_array_position);
 
-	m_tween = new Tween(TWEENS::EASE_IN_OUT, 2.0f);
+	m_tween = new Tween(TWEENS::EASE_IN_OUT_SIN, 2.0f);
 
+	//array_cell = ArrayCellFactory::arrayCell("14", cell_size, m_array_position, m_text_ren->getFont(), &m_registry);
+
+	array = ArrayFactory::array(string_array, cell_size, m_array_position, m_text_ren->getFont(), &m_registry);
+	array_buffer = ArrayGG::generate(array);
 	WindowSettings window_settings = window->getWindowSettings();
+
+	AnimationChain* anims = AnimationChainBuilder(array)
+		.move(TWEENS::EASE_IN_OUT_ELASTIC, 3, glm::vec3(400.0f, 400.0f, 0.0f))
+		.color(TWEENS::EASE_IN_OUT_ELASTIC, 3, COLOR::BLACK, COLOR::YELLOW)
+		.build();
+
+	m_anim_player.play(anims);
+	delete anims;
 
 	glm::mat4 ortho_projection = glm::ortho(0.0f, (float)window_settings.width, 0.0f, (float)window_settings.height);
 
@@ -33,14 +50,17 @@ ArrayTest::ArrayTest(Window* window)
 
 void ArrayTest::onUpdate(const float& frame_time)
 {
-	m_array_position.x = 100.0f + m_tween->update(frame_time) * 500.0f;
-	m_array->setPosition(m_array_position);
-	for (auto& array_cell : m_array->getCells()) {
-		m_text_renderer->push(array_cell.getText());
-		m_rect_ren->push(array_cell.getRect());
-	}
-	
-	m_text_renderer->onUpdate(m_mvp);
+	//m_array_position.x = 100.0f + m_tween->update(frame_time) * 500.0f;
+
+	m_anim_player.onUpdate(frame_time);
+
+	ArrayFactory::update(array);
+	ArrayGG::update(array, array_buffer.rect_buffer, array_buffer.text_buffer);
+
+	m_text_ren->push(array_buffer.text_buffer);
+	m_rect_ren->push(array_buffer.rect_buffer);
+
+	m_text_ren->onUpdate(m_mvp);
 	m_rect_ren->onUpdate(m_mvp);
 }
 

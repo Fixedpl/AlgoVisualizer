@@ -5,7 +5,7 @@
 #include "OpenGL/GL_VertexBuffer.h"
 #include "OpenGL/GL_Texture.h"
 #include "OpenGL/GL_TextureSlots.h"
-#include "Text.h"
+#include "TextBuffer.h"
 #include "Font.h"
 
 
@@ -17,7 +17,9 @@ public:
 
 	void onUpdate(const glm::mat4& mvp);
 
-	void push(const Text& text);
+	void push(TextBufferArray* buffer);
+
+	Font* getFont();
 
 private:
 
@@ -29,5 +31,5 @@ private:
 	std::unique_ptr<OpenGL::TextureSlots> m_texture_slots;
 	std::unique_ptr<Font> m_font;
 
-	std::vector<Text> m_texts;
+	std::vector<TextBufferArray*> m_buffers;
 };
