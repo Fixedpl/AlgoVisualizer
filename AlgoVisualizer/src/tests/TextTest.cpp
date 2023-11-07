@@ -61,7 +61,7 @@ TextTest::TextTest(Window* window)
 	props->aa_low = 0.5f;
 	props->aa_hight = 0.6f;
 	props->alignment = TextAlignment::DEFAULT;
-	props->font = font.get();
+	props->font = FontEnum::ARIAL;
 
 	WindowSettings window_settings = window->getWindowSettings();
 

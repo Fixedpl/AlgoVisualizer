@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <glm/glm.hpp>
-#include "text/Font.h"
+#include "text/FontEnum.h"
 #include "Entity/Entity.h"
 
 enum class TextAlignment
@@ -46,7 +46,7 @@ struct TextProps
 	float aa_low;
 	float aa_hight;
 	TextAlignment alignment;
-	Font* font;
+	FontEnum font;
 };
 
 struct ArrayCellProps

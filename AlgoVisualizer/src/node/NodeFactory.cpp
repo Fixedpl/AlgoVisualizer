@@ -4,7 +4,7 @@
 
 
 Entity NodeFactory::node(const std::string& text_str, const float& radius, const glm::vec4& color_vec, 
-    const glm::vec3& pos, Font* font, EntityRegistry* registry)
+    const glm::vec3& pos, EntityRegistry* registry)
 {
     Entity array_cell = registry->createEntity();
     Transform transform;
@@ -13,7 +13,7 @@ Entity NodeFactory::node(const std::string& text_str, const float& radius, const
 
     Entity circle = NodeFactory::circle(registry, pos, radius, color_vec);
     Entity text = NodeFactory::text(registry, text_str,
-        pos + glm::vec3(glm::vec2(radius), 0.0f), font);
+        pos + glm::vec3(glm::vec2(radius), 0.0f));
 
     NodeProps props;
     props.circle = circle;
@@ -64,7 +64,7 @@ Entity NodeFactory::circle(EntityRegistry* registry, const glm::vec3& pos, const
     return circle;
 }
 
-Entity NodeFactory::text(EntityRegistry* registry, const std::string& text_str, const glm::vec3& pos, Font* font)
+Entity NodeFactory::text(EntityRegistry* registry, const std::string& text_str, const glm::vec3& pos)
 {
     Entity text = registry->createEntity();
     Transform transform;
@@ -81,7 +81,7 @@ Entity NodeFactory::text(EntityRegistry* registry, const std::string& text_str, 
     props.aa_low = 0.0f;
     props.aa_hight = 0.5f;
     props.alignment = TextAlignment::CENTER;
-    props.font = font;
+    props.font = FontEnum::ARIAL;
     text.add<TextProps>(props);
 
     return text;

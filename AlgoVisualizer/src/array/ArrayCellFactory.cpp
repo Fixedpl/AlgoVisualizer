@@ -3,8 +3,8 @@
 #include "BaseComponents.h"
 
 
-Entity ArrayCellFactory::arrayCell(const std::string& text_str, const float& size, const glm::vec3& pos, 
-    Font* font, EntityRegistry* registry)
+Entity ArrayCellFactory::arrayCell(const std::string& text_str, const float& size, 
+    const glm::vec3& pos, EntityRegistry* registry)
 {
     Entity array_cell = registry->createEntity();
     Transform transform;
@@ -17,7 +17,7 @@ Entity ArrayCellFactory::arrayCell(const std::string& text_str, const float& siz
 
     Entity rect = ArrayCellFactory::rect(registry, pos, size);
     Entity text = ArrayCellFactory::text(registry, text_str, 
-        pos + glm::vec3(glm::vec2(size / 2.0f), 0.0f), font);
+        pos + glm::vec3(glm::vec2(size / 2.0f), 0.0f));
 
     ArrayCellProps props;
     props.rect = rect;
@@ -72,7 +72,7 @@ Entity ArrayCellFactory::rect(EntityRegistry* registry, const glm::vec3& pos, co
     return rect;
 }
 
-Entity ArrayCellFactory::text(EntityRegistry* registry, const std::string& text_str, const glm::vec3& pos, Font* font)
+Entity ArrayCellFactory::text(EntityRegistry* registry, const std::string& text_str, const glm::vec3& pos)
 {
     Entity text = registry->createEntity();
     Transform transform;
@@ -89,7 +89,7 @@ Entity ArrayCellFactory::text(EntityRegistry* registry, const std::string& text_
     props.aa_low = 0.0f;
     props.aa_hight = 0.5f;
     props.alignment = TextAlignment::CENTER;
-    props.font = font;
+    props.font = FontEnum::ARIAL;
     text.add<TextProps>(props);
   
     return text;

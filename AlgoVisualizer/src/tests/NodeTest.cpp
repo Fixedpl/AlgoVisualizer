@@ -14,7 +14,7 @@ NodeTest::NodeTest(Window* window)
 	m_text_ren = std::make_unique<TextRenderer>();
 	m_circle_ren = std::make_unique<CircleRenderer>();
 
-	node = NodeFactory::node("14", 50.0f, COLOR::YELLOW, glm::vec3(0.0f), m_text_ren->getFont(), &registry);
+	node = NodeFactory::node("14", 50.0f, COLOR::YELLOW, glm::vec3(0.0f), &registry);
 	transform = &node.get<Transform>();
 	props = &node.get<NodeProps>();
 	color = &props->circle.get<Color>();
