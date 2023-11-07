@@ -25,7 +25,7 @@ public:
 
 		SimpleArrayGG(Entity& array);
 
-		void fill(RectangleBufferArray* rect_buffer_array, TextBufferArray* text_buffer_array);
+		void fill(RectangleBuffer* rect_buffer, CharacterBuffer* text_buffer);
 
 	private:
 

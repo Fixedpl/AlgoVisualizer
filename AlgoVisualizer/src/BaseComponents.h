@@ -60,3 +60,8 @@ struct ArrayProps
 	std::vector<Entity> array_cells;
 };
 
+struct NodeProps
+{
+	Entity circle;
+	Entity text;
+};
