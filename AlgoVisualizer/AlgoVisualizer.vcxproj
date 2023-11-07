@@ -171,6 +171,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\text\FontDescriptor.cpp" />
     <ClCompile Include="src\tests\NodeTest.cpp" />
     <ClCompile Include="src\node\NodeFactory.cpp" />
     <ClCompile Include="src\node\NodeGG.cpp" />
@@ -203,6 +204,8 @@
     <ClCompile Include="src\text\TextBufferFiller.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\text\FontEnum.h" />
+    <ClInclude Include="src\text\FontDescriptor.h" />
     <ClInclude Include="src\tests\NodeTest.h" />
     <ClInclude Include="src\node\NodeFactory.h" />
     <ClInclude Include="src\node\NodeGG.h" />

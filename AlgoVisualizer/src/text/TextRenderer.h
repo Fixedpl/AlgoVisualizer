@@ -19,8 +19,6 @@ public:
 
 	void push(TextBufferArray* buffer);
 
-	Font* getFont();
-
 private:
 
 	std::unique_ptr<OpenGL::Shader> m_shader;

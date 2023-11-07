@@ -31,7 +31,7 @@ ArrayTest::ArrayTest(Window* window)
 
 	//array_cell = ArrayCellFactory::arrayCell("14", cell_size, m_array_position, m_text_ren->getFont(), &m_registry);
 
-	array = ArrayFactory::array(string_array, cell_size, m_array_position, m_text_ren->getFont(), &m_registry);
+	array = ArrayFactory::array(string_array, cell_size, m_array_position, &m_registry);
 	array_buffer = ArrayGG::generate(array);
 	WindowSettings window_settings = window->getWindowSettings();
 

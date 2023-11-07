@@ -5,7 +5,7 @@
 
 
 Entity ArrayFactory::array(const std::vector<std::string>& texts, const float& cell_size,
-	const glm::vec3& pos, Font* font, EntityRegistry* registry)
+	const glm::vec3& pos, EntityRegistry* registry)
 {
 	Entity array = registry->createEntity();
 	Transform transform;
@@ -20,8 +20,8 @@ Entity ArrayFactory::array(const std::vector<std::string>& texts, const float& c
 
 	float char_offset = 0.0f;
 	for (auto& text : texts) {
-		Entity array_cell = ArrayCellFactory::arrayCell(text, cell_size, pos + glm::vec3(char_offset, 0.0f, 0.0f),
-			font, registry);
+		Entity array_cell = ArrayCellFactory::arrayCell(text, cell_size, 
+			pos + glm::vec3(char_offset, 0.0f, 0.0f), registry);
 		props.array_cells.push_back(array_cell);
 		
 		char_offset += cell_size;

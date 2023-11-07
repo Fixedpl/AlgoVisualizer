@@ -2,6 +2,7 @@
 #include <imgui/imgui.h>
 
 #include "OpenGL/GL_Renderer.h"
+#include "FontDescriptor.h"
 #include "utils.h"
 
 
@@ -16,6 +17,8 @@ TextRenderer::TextRenderer()
 	m_vb = std::make_unique<OpenGL::VertexBuffer>(sizeof(CharacterBufferArray) * 1, DrawType::DYNAMIC);
 
 	m_font = std::make_unique<Font>("res/fonts/arial_atlas.png", "res/fonts/arial_atlas.json");
+
+	FontDescriptor::inst()->addFontDescriptor(FontEnum::ARIAL, m_font.get());
 
 	OpenGL::TextureData texture_data = m_font->loadFontTexture();
 
@@ -64,10 +67,5 @@ void TextRenderer::onUpdate(const glm::mat4& mvp)
 void TextRenderer::push(TextBufferArray* buffer)
 {
 	m_buffers.push_back(buffer);
-}
-
-Font* TextRenderer::getFont()
-{
-	return m_font.get();
 }
 

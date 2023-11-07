@@ -1,5 +1,7 @@
 #include "TextBufferFiller.h"
 
+#include "FontDescriptor.h"
+
 
 
 TextBufferArray* TextBufferFiller::generate(Entity& text)
@@ -37,6 +39,7 @@ TextBufferFiller::SingleTextGeometryGenerator::SingleTextGeometryGenerator(Entit
 	transform = text.get<Transform>();
 	color = text.get<Color>();
 	text_props = text.get<TextProps>();
+	font = FontDescriptor::inst()->getFontDescriptor(text_props.font);
 }
 
 void TextBufferFiller::SingleTextGeometryGenerator::fill(CharacterBuffer buffer_arr[])
@@ -55,7 +58,7 @@ void TextBufferFiller::SingleTextGeometryGenerator::fill(CharacterBuffer buffer_
 		CharacterBuffer& char_buffer = buffer_arr[i];
 
 		char letter = text_props.text[i];
-		CharacterDescription char_desc = text_props.font->getCharacterDescription(letter);
+		CharacterDescription char_desc = font->getCharacterDescription(letter);
 
 		fillCharBuffer(char_buffer, char_desc);
 
@@ -83,7 +86,7 @@ void TextBufferFiller::SingleTextGeometryGenerator::fillCharBuffer(CharacterBuff
 	int letter_width = char_desc.width * font_size_portion;
 	int letter_height = char_desc.height * font_size_portion;
 
-	OpenGL::TextureData font_texture = text_props.font->getFontData();
+	OpenGL::TextureData font_texture = font->getFontData();
 	glm::vec2 font_texture_size = glm::vec2(font_texture.width, font_texture.height);
 
 	top_left.position = transform.pos + glm::vec3(0.0f, letter_height, 0.0f);
@@ -120,7 +123,7 @@ void TextBufferFiller::SingleTextGeometryGenerator::calculateAlignment()
 	float width = 0.0f;
 	for (int i = 0; i < text_length; i++) {
 		char letter = text_props.text[i];
-		CharacterDescription char_desc = text_props.font->getCharacterDescription(letter);
+		CharacterDescription char_desc = font->getCharacterDescription(letter);
 
 		highest_y = std::max(char_desc.height * font_size_portion +
 			char_desc.bearing_bot * char_desc.size * font_size_portion, highest_y);

@@ -35,6 +35,7 @@ private:
 		Transform transform;
 		Color color;
 		TextProps text_props;
+		Font* font;
 
 		float horizontal_alignment;
 		float vertical_alignment;
