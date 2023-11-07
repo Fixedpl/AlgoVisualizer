@@ -2,14 +2,13 @@
 
 #include "BaseComponents.h"
 
-
 Entity NodeFactory::node(const std::string& text_str, const float& radius, const glm::vec4& color_vec, 
     const glm::vec3& pos, EntityRegistry* registry)
 {
-    Entity array_cell = registry->createEntity();
+    Entity node = registry->createEntity();
     Transform transform;
     transform.pos = pos;
-    array_cell.add<Transform>(transform);
+    node.add<Transform>(transform);
 
     Entity circle = NodeFactory::circle(registry, pos, radius, color_vec);
     Entity text = NodeFactory::text(registry, text_str,
@@ -18,9 +17,9 @@ Entity NodeFactory::node(const std::string& text_str, const float& radius, const
     NodeProps props;
     props.circle = circle;
     props.text = text;
-    array_cell.add<NodeProps>(props);
+    node.add<NodeProps>(props);
 
-    return array_cell;
+    return node;
 }
 
 void NodeFactory::update(Entity& node)
