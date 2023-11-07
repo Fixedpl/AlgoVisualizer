@@ -9,6 +9,7 @@
 #include "tests/ShadertoyTest.h"
 #include "tests/EasingTest.h"
 #include "tests/ArrayTest.h"
+#include "tests/NodeTest.h"
 
 
 int main()
@@ -26,8 +27,9 @@ int main()
     env.registerTest<ShadertoyTest>("Shadertoy");
     env.registerTest<EasingTest>("Easing");
     env.registerTest<ArrayTest>("Array");
+    env.registerTest<NodeTest>("Node");
 
-    env.loadTest("Array");
+    env.loadTest("Node");
 
     env.run();
 

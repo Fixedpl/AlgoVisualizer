@@ -171,6 +171,9 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\tests\NodeTest.cpp" />
+    <ClCompile Include="src\node\NodeFactory.cpp" />
+    <ClCompile Include="src\node\NodeGG.cpp" />
     <ClCompile Include="src\anims\AnimationChain.cpp" />
     <ClCompile Include="src\anims\AnimationChainBuilder.cpp" />
     <ClCompile Include="src\anims\AnimationPlayer.cpp" />
@@ -200,6 +203,9 @@
     <ClCompile Include="src\text\TextBufferFiller.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\tests\NodeTest.h" />
+    <ClInclude Include="src\node\NodeFactory.h" />
+    <ClInclude Include="src\node\NodeGG.h" />
     <ClInclude Include="src\anims\AnimationChain.h" />
     <ClInclude Include="src\anims\ColorAnimation.h" />
     <ClInclude Include="src\anims\AnimationChainBuilder.h" />

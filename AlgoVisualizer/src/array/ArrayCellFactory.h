@@ -20,7 +20,7 @@ public:
 
 	static Entity rect(EntityRegistry* registry, const glm::vec3& pos, const float& size);
 
-	static Entity text(EntityRegistry* registry, const std::string& text, const glm::vec3& pos, Font* font);
+	static Entity text(EntityRegistry* registry, const std::string& text_str, const glm::vec3& pos, Font* font);
 
 };
 

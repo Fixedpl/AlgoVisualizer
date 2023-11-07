@@ -27,7 +27,7 @@ ArrayTest::ArrayTest(Window* window)
 	m_array_position = glm::vec3(100.0f, 100.0f, 0.0f);
 	float cell_size = 100.0f;
 
-	m_tween = new Tween(TWEENS::EASE_IN_OUT_SIN, 2.0f);
+	m_tween = new Tween(TWEENS::LINEAR, 2.0f);
 
 	//array_cell = ArrayCellFactory::arrayCell("14", cell_size, m_array_position, m_text_ren->getFont(), &m_registry);
 
@@ -36,8 +36,11 @@ ArrayTest::ArrayTest(Window* window)
 	WindowSettings window_settings = window->getWindowSettings();
 
 	AnimationChain* anims = AnimationChainBuilder(array)
-		.move(TWEENS::EASE_IN_OUT_ELASTIC, 3, glm::vec3(400.0f, 400.0f, 0.0f))
-		.color(TWEENS::EASE_IN_OUT_ELASTIC, 3, COLOR::BLACK, COLOR::YELLOW)
+		.move(TWEENS::EASE_IN_OUT_BACK, 2, glm::vec3(400.0f, 0.0f, 0.0f))
+		.move(TWEENS::EASE_IN_OUT_SIN, 2, glm::vec3(0.0f, 400.0f, 0.0f))
+		.move(TWEENS::LINEAR, 2, glm::vec3(-400.0f, 0.0f, 0.0f))
+		.move(TWEENS::EASE_IN_OUT_ELASTIC, 2, glm::vec3(0.0f, -400.0f, 0.0f))
+		.color(TWEENS::EASE_IN_OUT_BACK, 3, COLOR::PINK, COLOR::BLACK)
 		.build();
 
 	m_anim_player.play(anims);
