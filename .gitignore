@@ -34,8 +34,10 @@ bld/
 [Ll]ogs/
 L4_lib_intermediates/
 L4_lib/
-bin_intermediates/
-bin/
+AV_lib_intermediates/
+AV_lib/
+AV_demo_intermediates/
+AV_demo/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
