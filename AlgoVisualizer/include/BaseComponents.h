@@ -65,3 +65,12 @@ struct NodeProps
 	Entity circle;
 	Entity text;
 };
+
+struct LineProps
+{
+	glm::vec3 vec;
+	float thickness;
+	float radius;
+	float sharpness;
+	Entity rect;
+};
