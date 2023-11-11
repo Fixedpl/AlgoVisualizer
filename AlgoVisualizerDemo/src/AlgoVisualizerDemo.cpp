@@ -10,6 +10,8 @@
 #include "tests/EasingTest.h"
 #include "tests/ArrayTest.h"
 #include "tests/NodeTest.h"
+#include "tests/LineTest.h"
+#include "tests/LineShaderTest.h"
 
 
 
@@ -30,8 +32,10 @@ int main()
     env.registerTest<EasingTest>("Easing");
     env.registerTest<ArrayTest>("Array");
     env.registerTest<NodeTest>("Node");
+    env.registerTest<LineTest>("Line");
+    env.registerTest<LineShaderTest>("Line Shader");
 
-    env.loadTest("Node");
+    env.loadTest("Line");
 
     env.run();
 

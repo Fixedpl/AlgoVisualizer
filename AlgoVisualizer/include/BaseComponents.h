@@ -68,9 +68,8 @@ struct NodeProps
 
 struct LineProps
 {
-	glm::vec3 vec;
+	glm::vec2 vec;
 	float thickness;
 	float radius;
 	float sharpness;
-	Entity rect;
 };

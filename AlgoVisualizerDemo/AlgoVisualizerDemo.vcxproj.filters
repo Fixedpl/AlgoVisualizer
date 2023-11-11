@@ -45,6 +45,12 @@
     <ClCompile Include="src\tests\TextTest.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\LineTest.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\LineShaderTest.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\tests\ArrayTest.h">
@@ -74,6 +80,12 @@
     <ClInclude Include="src\tests\TextTest.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\LineTest.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\LineShaderTest.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\fCircle.glsl" />
@@ -95,5 +107,7 @@
     <None Include="res\shaders\vRectangle.glsl" />
     <None Include="res\shaders\vRectangleOldd.glsl" />
     <None Include="res\shaders\vText.glsl" />
+    <None Include="res\shaders\fLine.glsl" />
+    <None Include="res\shaders\vLine.glsl" />
   </ItemGroup>
 </Project>

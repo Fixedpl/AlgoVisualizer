@@ -179,6 +179,8 @@ XCOPY "$(SolutionDir)AV_lib\*.DLL" "$(TargetDir)" /D /K /Y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\tests\LineShaderTest.cpp" />
+    <ClCompile Include="src\tests\LineTest.cpp" />
     <ClCompile Include="src\AlgoVisualizerDemo.cpp" />
     <ClCompile Include="src\tests\ArrayTest.cpp" />
     <ClCompile Include="src\tests\CircleGridTest.cpp" />
@@ -191,6 +193,8 @@ XCOPY "$(SolutionDir)AV_lib\*.DLL" "$(TargetDir)" /D /K /Y</Command>
     <ClCompile Include="src\tests\TextTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\tests\LineShaderTest.h" />
+    <ClInclude Include="src\tests\LineTest.h" />
     <ClInclude Include="src\tests\ArrayTest.h" />
     <ClInclude Include="src\tests\CircleGridTest.h" />
     <ClInclude Include="src\tests\CircleTest.h" />
@@ -203,6 +207,7 @@ XCOPY "$(SolutionDir)AV_lib\*.DLL" "$(TargetDir)" /D /K /Y</Command>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\fCircle.glsl" />
+    <None Include="res\shaders\fLine.glsl" />
     <None Include="res\shaders\fRectangle.glsl" />
     <None Include="res\shaders\fRectangleOldd.glsl" />
     <None Include="res\shaders\fText.glsl" />
@@ -218,6 +223,7 @@ XCOPY "$(SolutionDir)AV_lib\*.DLL" "$(TargetDir)" /D /K /Y</Command>
     <None Include="res\shaders\toy_basic.glsl" />
     <None Include="res\shaders\vBasic.glsl" />
     <None Include="res\shaders\vCircle.glsl" />
+    <None Include="res\shaders\vLine.glsl" />
     <None Include="res\shaders\vRectangle.glsl" />
     <None Include="res\shaders\vRectangleOldd.glsl" />
     <None Include="res\shaders\vText.glsl" />

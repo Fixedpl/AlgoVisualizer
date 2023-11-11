@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>LIBRARY_EXPORTS;ENTT_EXPORT</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)include\text;$(ProjectDir)include\rectangle;$(ProjectDir)include\node;$(ProjectDir)include\circle;$(ProjectDir)include\array;$(ProjectDir)include\anims;$(ProjectDir)include\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)include\line;$(ProjectDir)include\text;$(ProjectDir)include\rectangle;$(ProjectDir)include\node;$(ProjectDir)include\circle;$(ProjectDir)include\array;$(ProjectDir)include\anims;$(ProjectDir)include\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -115,7 +115,7 @@ XCOPY "$(ProjectDir)res" "$(TargetDir)res\" /D /K /Y /E</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>LIBRARY_EXPORTS;ENTT_EXPORT</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)include\text;$(ProjectDir)include\rectangle;$(ProjectDir)include\node;$(ProjectDir)include\circle;$(ProjectDir)include\array;$(ProjectDir)include\anims;$(ProjectDir)include\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)include\line;$(ProjectDir)include\text;$(ProjectDir)include\rectangle;$(ProjectDir)include\node;$(ProjectDir)include\circle;$(ProjectDir)include\array;$(ProjectDir)include\anims;$(ProjectDir)include\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -138,7 +138,7 @@ XCOPY "$(ProjectDir)res" "$(TargetDir)res\" /D /K /Y /E</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>LIBRARY_EXPORTS;ENTT_EXPORT</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)include\text;$(ProjectDir)include\rectangle;$(ProjectDir)include\node;$(ProjectDir)include\circle;$(ProjectDir)include\array;$(ProjectDir)include\anims;$(ProjectDir)include\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)include\line;$(ProjectDir)include\text;$(ProjectDir)include\rectangle;$(ProjectDir)include\node;$(ProjectDir)include\circle;$(ProjectDir)include\array;$(ProjectDir)include\anims;$(ProjectDir)include\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -161,7 +161,7 @@ XCOPY "$(ProjectDir)res" "$(TargetDir)res\" /D /K /Y /E</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>LIBRARY_EXPORTS;ENTT_EXPORT</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)include\text;$(ProjectDir)include\rectangle;$(ProjectDir)include\node;$(ProjectDir)include\circle;$(ProjectDir)include\array;$(ProjectDir)include\anims;$(ProjectDir)include\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)include\line;$(ProjectDir)include\text;$(ProjectDir)include\rectangle;$(ProjectDir)include\node;$(ProjectDir)include\circle;$(ProjectDir)include\array;$(ProjectDir)include\anims;$(ProjectDir)include\vendor;$(SolutionDir)L4_lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -179,6 +179,9 @@ XCOPY "$(ProjectDir)res" "$(TargetDir)res\" /D /K /Y /E</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\line\LineBufferFiller.cpp" />
+    <ClCompile Include="src\line\LineFactory.cpp" />
+    <ClCompile Include="src\line\LineRenderer.cpp" />
     <ClCompile Include="src\text\FontDescriptor.cpp" />
     <ClCompile Include="src\node\NodeFactory.cpp" />
     <ClCompile Include="src\node\NodeGG.cpp" />
@@ -219,6 +222,10 @@ XCOPY "$(ProjectDir)res" "$(TargetDir)res\" /D /K /Y /E</Command>
     <ClInclude Include="include\circle\CircleRenderer.h" />
     <ClInclude Include="include\Colors.h" />
     <ClInclude Include="include\dll_algo.h" />
+    <ClInclude Include="include\line\LineBuffer.h" />
+    <ClInclude Include="include\line\LineBufferFiller.h" />
+    <ClInclude Include="include\line\LineFactory.h" />
+    <ClInclude Include="include\line\LineRenderer.h" />
     <ClInclude Include="include\node\NodeFactory.h" />
     <ClInclude Include="include\node\NodeGG.h" />
     <ClInclude Include="include\rectangle\RectangleBuffer.h" />
@@ -253,6 +260,8 @@ XCOPY "$(ProjectDir)res" "$(TargetDir)res\" /D /K /Y /E</Command>
     <ClInclude Include="src\text\TextBufferFiller.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="res\shaders\fLine.glsl" />
     <None Include="res\shaders\fRectangle.glsl" />
     <None Include="res\shaders\fText.glsl" />
     <None Include="res\shaders\toy_1.glsl" />
@@ -269,6 +278,7 @@ XCOPY "$(ProjectDir)res" "$(TargetDir)res\" /D /K /Y /E</Command>
     <None Include="res\shaders\fRectangleOldd.glsl" />
     <None Include="res\shaders\vBasic.glsl" />
     <None Include="res\shaders\vCircle.glsl" />
+    <None Include="res\shaders\vLine.glsl" />
     <None Include="res\shaders\vRectangle.glsl" />
     <None Include="res\shaders\vRectangleOldd.glsl" />
     <None Include="res\shaders\vText.glsl" />

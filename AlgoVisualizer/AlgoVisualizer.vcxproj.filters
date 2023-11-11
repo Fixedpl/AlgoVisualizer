@@ -78,6 +78,15 @@
     <ClCompile Include="src\text\FontDescriptor.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="src\line\LineFactory.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\line\LineBufferFiller.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\line\LineRenderer.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\circle\CircleBuffer.h">
@@ -227,6 +236,18 @@
     <ClInclude Include="include\dll_algo.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="include\line\LineFactory.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\line\LineBuffer.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\line\LineBufferFiller.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\line\LineRenderer.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\fCircle.glsl" />
@@ -248,5 +269,8 @@
     <None Include="res\shaders\fText.glsl" />
     <None Include="res\shaders\fRectangle.glsl" />
     <None Include="res\shaders\vRectangle.glsl" />
+    <None Include="cpp.hint" />
+    <None Include="res\shaders\vLine.glsl" />
+    <None Include="res\shaders\fLine.glsl" />
   </ItemGroup>
 </Project>

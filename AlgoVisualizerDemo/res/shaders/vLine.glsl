@@ -6,6 +6,7 @@ layout (location = 2) in vec2 norm;
 layout (location = 3) in vec2 size;
 layout (location = 4) in float border_width;
 layout (location = 5) in vec4 border_color;
+layout (location = 6) in float sharpness;
 
 
 out VS_OUT 
@@ -15,6 +16,7 @@ out VS_OUT
 	vec2 v_size;
 	float v_border_width;
 	vec4 v_border_color;
+	float v_sharpness;
 } vs_out;
 
 
@@ -26,6 +28,7 @@ void main() {
 	vs_out.v_size = size;
 	vs_out.v_border_width = border_width;
 	vs_out.v_border_color = border_color;
+	vs_out.v_sharpness = sharpness;
 
 	gl_Position = u_MVP * vec4(pos, 1.0);
 };

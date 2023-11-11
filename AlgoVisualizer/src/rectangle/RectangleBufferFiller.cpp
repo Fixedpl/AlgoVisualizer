@@ -1,5 +1,6 @@
 #include "RectangleBufferFiller.h"
 
+#include <glm/gtx/rotate_vector.hpp>
 
 
 RectangleBufferArray* RectangleBufferFiller::generate(Entity& rect)
@@ -61,4 +62,3 @@ void RectangleBufferFiller::SingleRectangleGeometryGenerator::fillVertex(Rectang
 	vertex.border_color = border.color;
 	vertex.sharpness = rect_props.sharpness;
 }
-
